@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="CameraActivity.cs" />
     <Compile Include="CameraActivitySettings.cs" />
+    <Compile Include="ControlPadActivity.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\DataHelper\DataBase.cs" />
     <Compile Include="Resources\ListViewAdapter.cs" />
@@ -116,7 +117,7 @@
     <AndroidResource Include="Resources\layout\list_view_dataTemplate.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\ControlsActivity.axml">
+    <AndroidResource Include="Resources\layout\ControlsPadActivity.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

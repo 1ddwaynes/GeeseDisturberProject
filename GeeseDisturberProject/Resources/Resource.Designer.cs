@@ -155,7 +155,7 @@ namespace GeeseDisturberProject
 			public const int ControlMenu = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ControlsActivity = 2130903044;
+			public const int ControlsPadActivity = 2130903044;
 			
 			// aapt resource value: 0x7f030005
 			public const int list_view_dataTemplate = 2130903045;

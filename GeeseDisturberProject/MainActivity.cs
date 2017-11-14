@@ -54,7 +54,7 @@ namespace GeeseDisturberProject
 
         private void ControlsButton_Click(object sender, EventArgs e)
         {
-            var intent = new Intent(this, typeof(CameraActivity));
+            var intent = new Intent(this, typeof(ControlPadActivity));
             StartActivity(intent);
         }
 

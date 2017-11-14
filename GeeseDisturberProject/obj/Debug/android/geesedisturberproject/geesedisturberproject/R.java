@@ -43,7 +43,7 @@ public final class R {
         public static final int cameraactivitysettings=0x7f030001;
         public static final int controlgmaps=0x7f030002;
         public static final int controlmenu=0x7f030003;
-        public static final int controlsactivity=0x7f030004;
+        public static final int controlspadactivity=0x7f030004;
         public static final int list_view_datatemplate=0x7f030005;
         public static final int mainmenu=0x7f030006;
         public static final int mainsettings=0x7f030007;

@@ -12,6 +12,7 @@ using Android.Widget;
 using Android.Webkit;
 using GeeseDisturberProject.Resources;
 using GeeseDisturberProject.Resources.DataHelper;
+using GeeseDisturberProject.Model;
 using Android.Util;
 
 namespace GeeseDisturberProject.Camera
@@ -20,36 +21,36 @@ namespace GeeseDisturberProject.Camera
     public class CameraActivity : Activity
     {
         WebView web_view;
-        DataBase db;
-        string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
+        //DataBase db;
+        //string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
         private Button buttonStreamSetting;
         private Button BackButton;
 
-        static string url = "http://proxy7.remote-iot.com:";
-        static string port = "29444";
-
-        static string stream = url + port + "/stream";
-        static string StreamSetting = url + port + "/panel";
+        
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
 
+            var setting = new Setting();
+            string data = setting.GetUrl(true);
+
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.CameraActivity);
-            CameraView();
+
+            CameraView(data);
             FindViews();
             HandleEvents();
         }
 
-        public void CameraView()
+        public void CameraView(string data)
         {
             web_view = FindViewById<WebView>(Resource.Id.WebView);
             web_view.Settings.JavaScriptEnabled = true;
             web_view.SetWebViewClient(new HelloWebViewClient());
 
-            int default_zoom_level = 50;
+            int default_zoom_level = 100;
             web_view.SetInitialScale(default_zoom_level);
 
             var width = web_view.Width;
@@ -61,7 +62,7 @@ namespace GeeseDisturberProject.Camera
 
             SetViewSettings(web_view);
 
-            web_view.LoadUrl(stream + "?width=" + width + "&height=" + height);
+            web_view.LoadUrl(data + "?width=" + 320 + "&height=" + 240);
         }
 
         private void HandleEvents()
@@ -73,7 +74,7 @@ namespace GeeseDisturberProject.Camera
         private void StreamSettings_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(CameraActivitySettings));
-            intent.PutExtra("key", StreamSetting);
+            
             StartActivity(intent);
         }
 
@@ -87,17 +88,6 @@ namespace GeeseDisturberProject.Camera
         {
             buttonStreamSetting = FindViewById<Button>(Resource.Id.StreamSettings);
             BackButton = FindViewById<Button>(Resource.Id.Back);
-        }
-
-        private void GetData()
-        {
-            db = new DataBase();
-            db.createDataBase();
-            
-            Log.Info("DB_PATH", folder);
-            var table = db.selectQueryTableHistory(1);
-
-
         }
 
         private void SetViewSettings(WebView view)

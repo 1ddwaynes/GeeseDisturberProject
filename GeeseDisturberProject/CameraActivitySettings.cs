@@ -22,31 +22,24 @@ namespace GeeseDisturberProject
     {
         WebView web_view;
         private Button BackButton;
-        public string streamSettings = null;
-
-        static string url = "http://proxy7.remote-iot.com:";
-        static string port = "22598";
-        static string StreamSetting = url + port + "/panel";
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            var setting = new Setting();
+            string data = setting.GetUrl(false);
+
             base.OnCreate(savedInstanceState);
 
-            Bundle extras = Intent.Extras;
-            if (extras != null)
-            {
-                String streamSettings = extras.GetString("key");
-            }
-
             SetContentView(Resource.Layout.CameraActivitySettings);
-            CameraView();
+
+            CameraView(data);
             FindViews();
             HandleEvents();
         }
 
         
 
-        public void CameraView()
+        public void CameraView(string data)
         {
             web_view = FindViewById<WebView>(Resource.Id.WebView);
             web_view.Settings.JavaScriptEnabled = true;
@@ -61,7 +54,7 @@ namespace GeeseDisturberProject
 
             SetViewSettings(web_view);
 
-            web_view.LoadUrl(StreamSetting + "?width=" + width + "&height=" + height);
+            web_view.LoadUrl(data + "?width=" + 320 + "&height=" + 240);
         }
 
         private void HandleEvents()
@@ -83,6 +76,7 @@ namespace GeeseDisturberProject
         private void BackButton_Click(object sender, EventArgs e)
         {
             var intent = new Intent(this, typeof(CameraActivity));
+            Finish();
             StartActivity(intent);
         }
 

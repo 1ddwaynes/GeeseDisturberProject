@@ -107,6 +107,15 @@ class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		/* We need to ensure that "GeeseDisturberProject.dll" comes first in this list. */
 		"GeeseDisturberProject.dll",
+		"Amazon.Lambda.Core.dll",
+		"AWSSDK.Core.dll",
+		"PCLCrypto.dll",
+		"PCLStorage.Abstractions.dll",
+		"PCLStorage.dll",
+		"PInvoke.BCrypt.dll",
+		"PInvoke.Kernel32.dll",
+		"PInvoke.NCrypt.dll",
+		"PInvoke.Windows.Core.dll",
 		"SQLite-net.dll",
 		"SQLitePCL.raw.dll",
 		"SQLitePCLRaw.batteries_green.dll",
@@ -114,6 +123,7 @@ class MonoPackageManager_Resources {
 		"SQLitePCLRaw.core.dll",
 		"SQLitePCLRaw.lib.e_sqlite3.dll",
 		"SQLitePCLRaw.provider.e_sqlite3.dll",
+		"Validation.dll",
 	};
 	public static final String[] Dependencies = new String[]{
 	};

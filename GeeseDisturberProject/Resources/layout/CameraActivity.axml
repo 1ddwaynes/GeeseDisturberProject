@@ -3,12 +3,12 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
     <WebView
-        android:orientation="horizontal"
         android:id="@+id/WebView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
-        android:scrollbars="none" />
+        android:scrollbars="none"
+        android:rotationX="0" />
     <RelativeLayout
         android:layout_width="fill_parent"
         android:layout_height="35dp"

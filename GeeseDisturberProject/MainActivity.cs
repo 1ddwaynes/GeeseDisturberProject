@@ -11,6 +11,9 @@ using GeeseDisturberProject.Resources.DataHelper;
 using GeeseDisturberProject.Model;
 using Android.Util;
 using System.Collections.Generic;
+using Amazon;
+using Amazon.Util;
+using static Amazon.Util.LoggingConfig;
 
 namespace GeeseDisturberProject
 {
@@ -23,14 +26,29 @@ namespace GeeseDisturberProject
         private Button ControlButton;
 
 
+
         protected override void OnCreate(Bundle bundle)
         {
+            var loggingConfig = AWSConfigs.LoggingConfig;
+            loggingConfig.LogMetrics = true;
+            loggingConfig.LogResponses = ResponseLoggingOption.Always;
+            loggingConfig.LogMetricsFormat = LogMetricsFormatOption.JSON;
+            loggingConfig.LogTo = LoggingOptions.SystemDiagnostics;
+
+            AWSConfigs.AWSRegion = "us-east-1";
+            AWSConfigs.CorrectForClockSkew = true;
+        
+
+            var data = new Setting();
+
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.MainMenu);
+            Finish();
+            data.InitUrl();
 
             FindViews();
             HandleEvents();
-            insertDefualtvalues();
+            
         }
 
         private void HandleEvents()
@@ -88,6 +106,7 @@ namespace GeeseDisturberProject
             };
             db.insertIntoTableHistory(history);
         }
+
     }
 }
 

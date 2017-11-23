@@ -26,6 +26,10 @@ namespace GeeseDisturberProject
 		
 		public static void UpdateIdValues()
 		{
+			global::PCLCrypto.Resource.String.ApplicationName = global::GeeseDisturberProject.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::GeeseDisturberProject.Resource.String.Hello;
+			global::PCLStorage.Resource.String.ApplicationName = global::GeeseDisturberProject.Resource.String.ApplicationName;
+			global::PCLStorage.Resource.String.Hello = global::GeeseDisturberProject.Resource.String.Hello;
 		}
 		
 		public partial class Attribute
@@ -179,8 +183,14 @@ namespace GeeseDisturberProject
 		public partial class String
 		{
 			
+			// aapt resource value: 0x7f040001
+			public const int ApplicationName = 2130968577;
+			
 			// aapt resource value: 0x7f040000
-			public const int app_name = 2130968576;
+			public const int Hello = 2130968576;
+			
+			// aapt resource value: 0x7f040002
+			public const int app_name = 2130968578;
 			
 			static String()
 			{

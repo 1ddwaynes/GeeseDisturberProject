@@ -32,29 +32,42 @@ namespace GeeseDisturberProject.Model
 
         public string Address_n { get; set; }
 
+        public bool UseNew { get; set; }
+
         public string GetUrl(bool settings)
         {
-            if (settings)
-                return Address_n + Port_n + "/stream";
+            if (Address_n != null && Port_n != null)
+            {
+                if (settings == false)
+                    return Address_n + Port_n + "/stream";
 
+                else
+                    return Address_n + Port_n + "/panel";
+            }
             else
-                return Address_n + Port_n + "/panel";
+            {
+                InitUrl();
+                return GetUrl(settings);
+            }
         }
 
         public void EditUrl (string port, string Address)
         {
-            Port_n = port;
+            this.Port_n = port;
 
-            Address_n = Address;
+            this.Address_n = Address;
+
+            UseNew = true;
         }
 
         public void InitUrl()
         {
-            if (Address_n == null)
+            if (UseNew != true)
+            {
                 Address_n = "http://proxy7.remote-iot.com:";
 
-            if (Port_n == null)
                 Port_n = "12356";
+            }
         }
     }
 }

@@ -14,19 +14,26 @@ using GeeseDisturberProject.Camera;
 using GeeseDisturberProject.Resources.DataHelper;
 using GeeseDisturberProject.Model;
 using Android.Util;
+using Android.Content.PM;
 
 namespace GeeseDisturberProject
 {
-    [Activity(Label = "CameraActivitySettings")]
+    [Activity(Label = "CameraActivitySettings", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation,
+    ScreenOrientation = ScreenOrientation.Landscape)]
     public class CameraActivitySettings : Activity
     {
         WebView web_view;
         private Button BackButton;
 
+        Setting settings = new Setting();
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            var setting = new Setting();
-            string data = setting.GetUrl(false);
+            //var setting = new Setting();
+            string data = settings.GetUrl(true);
+            Console.WriteLine(settings.GetUrl(true));
+            //string data = "http://proxy7.remote-iot.com:13907/panel";
+
 
             base.OnCreate(savedInstanceState);
 
@@ -36,8 +43,6 @@ namespace GeeseDisturberProject
             FindViews();
             HandleEvents();
         }
-
-        
 
         public void CameraView(string data)
         {

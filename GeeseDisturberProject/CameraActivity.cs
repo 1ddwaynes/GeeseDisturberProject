@@ -21,20 +21,21 @@ namespace GeeseDisturberProject.Camera
     public class CameraActivity : Activity
     {
         WebView web_view;
+
+        Setting settings = new Setting();
         //DataBase db;
         //string folder = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
 
         private Button buttonStreamSetting;
         private Button BackButton;
 
-        
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnPostCreate(savedInstanceState);
-
-            var setting = new Setting();
-            string data = setting.GetUrl(true);
+            
+            //string data = "http://proxy7.remote-iot.com:12356/stream";
+            string data = settings.GetUrl(false);
+            Console.WriteLine(settings.GetUrl(false));
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.CameraActivity);

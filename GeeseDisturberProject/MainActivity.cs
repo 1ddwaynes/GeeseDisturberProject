@@ -25,26 +25,23 @@ namespace GeeseDisturberProject
         private Button SettingsButton;
         private Button ControlButton;
 
-
+        Setting settings = new Setting();
 
         protected override void OnCreate(Bundle bundle)
         {
-            var loggingConfig = AWSConfigs.LoggingConfig;
-            loggingConfig.LogMetrics = true;
-            loggingConfig.LogResponses = ResponseLoggingOption.Always;
-            loggingConfig.LogMetricsFormat = LogMetricsFormatOption.JSON;
-            loggingConfig.LogTo = LoggingOptions.SystemDiagnostics;
+            //var loggingConfig = AWSConfigs.LoggingConfig;
+            //loggingConfig.LogMetrics = true;
+            //loggingConfig.LogResponses = ResponseLoggingOption.Always;
+            //loggingConfig.LogMetricsFormat = LogMetricsFormatOption.JSON;
+            //loggingConfig.LogTo = LoggingOptions.SystemDiagnostics;
 
-            AWSConfigs.AWSRegion = "us-east-1";
-            AWSConfigs.CorrectForClockSkew = true;
-        
-
-            var data = new Setting();
+            //AWSConfigs.AWSRegion = "us-east-1";
+            //AWSConfigs.CorrectForClockSkew = true;
 
             base.OnCreate(bundle);
             SetContentView(Resource.Layout.MainMenu);
-            Finish();
-            data.InitUrl();
+            //Finish();
+            settings.InitUrl();
 
             FindViews();
             HandleEvents();
